@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="21bae40e-f070-425d-b797-36c6a93b6f2a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     proveedor."idProveedor" AS proveedor_idProveedor,
+     proveedor."nomProveedor" AS proveedor_nomProveedor,
+     proveedor."direcProveedor" AS proveedor_direcProveedor,
+     proveedor."telfProveedor" AS proveedor_telfProveedor,
+     proveedor."descripcionProveedor" AS proveedor_descripcionProveedor
+FROM
+     "dbo"."proveedor" proveedor]]>
+	</queryString>
+	<field name="proveedor_idProveedor" class="java.lang.Integer"/>
+	<field name="proveedor_nomProveedor" class="java.lang.String"/>
+	<field name="proveedor_direcProveedor" class="java.lang.String"/>
+	<field name="proveedor_telfProveedor" class="java.lang.String"/>
+	<field name="proveedor_descripcionProveedor" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="1898b0a6-4193-4793-8f4f-1876f26e7e78"/>
+				<staticText>
+					<reportElement x="20" y="20" width="375" height="43" forecolor="#FFFFFF" uuid="8c8a9861-31b1-407f-9b22-1b5d9f0c58dc"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporte Proveedor]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="6acbbcd4-9352-473d-9923-e65cede89511"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="33" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="59965f7b-00b5-4b5a-9988-3162b1db3817"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="33" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c3899ebd-a747-471e-9e32-e3ed67067c6d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="144" y="0" width="150" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="dc47fed2-c644-4f4e-a9a4-d3dad8361b1e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="294" y="0" width="81" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="5ed2a87e-e386-4792-8e2b-9bbee80674a7"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="375" y="0" width="180" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="02f3edc3-0d15-479c-a52e-023c61f997d4"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="fd586d1c-617e-4395-bf1e-b59ee53e0b94"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="33" height="20" uuid="e5e02af2-57cf-4561-a4a3-817e48b1c868"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_idProveedor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="49" y="0" width="95" height="20" uuid="ba5d33e5-04f9-419f-9e6f-dc520bbcfa24"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_nomProveedor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="167" y="0" width="127" height="20" uuid="b2c446a9-29ab-4eee-83e0-4143303474f5"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_direcProveedor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="398" y="0" width="157" height="20" uuid="99f890d5-6769-482c-b9fb-2c777f20c821"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_descripcionProveedor}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="304" y="0" width="71" height="19" uuid="88f6056b-3cf0-4b2b-99fc-91479976d5fc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{proveedor_telfProveedor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="b013b01a-6fb0-4e41-975b-1106db50c432"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="1bad155c-caae-44d0-80e9-2ed2eb1627b9"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="c928aa15-3f27-4883-aa96-41f1e9263155"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

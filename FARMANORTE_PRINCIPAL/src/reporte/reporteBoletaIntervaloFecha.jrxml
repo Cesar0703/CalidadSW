@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="065e164b-cebe-45b3-8228-2779765bd2ee">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="17"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="dato1" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="dato2" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     boleta."idBoleta" AS boleta_idBoleta,
+     boleta."fecha" AS boleta_fecha,
+     boleta."idCliente" AS boleta_idCliente,
+     boleta."idEmpleado" AS boleta_idEmpleado,
+     boleta."total" AS boleta_total,
+     detalle_boleta."idDetalle" AS detalle_boleta_idDetalle,
+     detalle_boleta."cantidad" AS detalle_boleta_cantidad,
+     detalle_boleta."precioUnitario" AS detalle_boleta_precioUnitario,
+     detalle_boleta."precioTotal" AS detalle_boleta_precioTotal,
+     detalle_boleta."idBoleta" AS detalle_boleta_idBoleta,
+     detalle_boleta."idProducto" AS detalle_boleta_idProducto,
+     empleado."idEmpleado" AS empleado_idEmpleado,
+     empleado."nomEmpleado" AS empleado_nomEmpleado,
+     empleado."apePaEmpleado" AS empleado_apePaEmpleado,
+     empleado."apeMaEmpleado" AS empleado_apeMaEmpleado,
+     producto."idProducto" AS producto_idProducto,
+     producto."nomProducto" AS producto_nomProducto,
+     cliente."idCliente" AS cliente_idCliente,
+     cliente."nomCliente" AS cliente_nomCliente,
+     cliente."apePaCliente" AS cliente_apePaCliente,
+     cliente."apeMaCliente" AS cliente_apeMaCliente,
+     cliente."dniCliente" AS cliente_dniCliente
+FROM
+     "dbo"."boleta" boleta INNER JOIN "dbo"."detalle_boleta" detalle_boleta ON boleta."idBoleta" = detalle_boleta."idBoleta"
+     INNER JOIN "dbo"."empleado" empleado ON boleta."idEmpleado" = empleado."idEmpleado"
+     INNER JOIN "dbo"."cliente" cliente ON boleta."idCliente" = cliente."idCliente"
+     INNER JOIN "dbo"."producto" producto ON detalle_boleta."idProducto" = producto."idProducto"
+WHERE  
+     boleta."fecha" BETWEEN $P{dato1} AND $P{dato2}]]>
+	</queryString>
+	<field name="boleta_idBoleta" class="java.lang.Integer"/>
+	<field name="boleta_fecha" class="java.sql.Date"/>
+	<field name="boleta_idCliente" class="java.lang.Integer"/>
+	<field name="boleta_idEmpleado" class="java.lang.Integer"/>
+	<field name="boleta_total" class="java.math.BigDecimal"/>
+	<field name="detalle_boleta_idDetalle" class="java.lang.Integer"/>
+	<field name="detalle_boleta_cantidad" class="java.lang.Integer"/>
+	<field name="detalle_boleta_precioUnitario" class="java.math.BigDecimal"/>
+	<field name="detalle_boleta_precioTotal" class="java.math.BigDecimal"/>
+	<field name="detalle_boleta_idBoleta" class="java.lang.Integer"/>
+	<field name="detalle_boleta_idProducto" class="java.lang.Integer"/>
+	<field name="empleado_idEmpleado" class="java.lang.Integer"/>
+	<field name="empleado_nomEmpleado" class="java.lang.String"/>
+	<field name="empleado_apePaEmpleado" class="java.lang.String"/>
+	<field name="empleado_apeMaEmpleado" class="java.lang.String"/>
+	<field name="producto_idProducto" class="java.lang.Integer"/>
+	<field name="producto_nomProducto" class="java.lang.String"/>
+	<field name="cliente_idCliente" class="java.lang.Integer"/>
+	<field name="cliente_nomCliente" class="java.lang.String"/>
+	<field name="cliente_apePaCliente" class="java.lang.String"/>
+	<field name="cliente_apeMaCliente" class="java.lang.String"/>
+	<field name="cliente_dniCliente" class="java.lang.String"/>
+	<group name="boleta_idBoleta">
+		<groupExpression><![CDATA[$F{boleta_idBoleta}]]></groupExpression>
+		<groupHeader>
+			<band height="69">
+				<line>
+					<reportElement x="61" y="48" width="494" height="1" forecolor="#666666" uuid="5a8cd45a-527f-4a99-adc0-8a9985ec9845"/>
+				</line>
+				<textField>
+					<reportElement mode="Opaque" x="61" y="0" width="494" height="48" forecolor="#006699" backcolor="#E6E6E6" uuid="84a9f5c0-83bb-430c-8653-8a49a12dc317"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Boleta "+$F{detalle_boleta_idBoleta}+"\t\t\t\t\t\tFecha: "+$F{boleta_fecha}+
+"\nCliente: "+" "+$F{cliente_nomCliente}+" "+$F{cliente_apePaCliente}+" "+$F{cliente_apeMaCliente}+
+"\nVendedor: "+$F{empleado_nomEmpleado}+" "+$F{empleado_apePaEmpleado}+" "+$F{empleado_apeMaEmpleado}
++"\nTotal(s/.): "+$F{boleta_total}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="494" y="49" width="61" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="ea2de0f9-e422-419e-b332-c75de5080387"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Importe]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="261" y="49" width="61" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="a95b6555-b01c-49cd-a06d-b057f7fc8e6b"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cantidad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="200" y="49" width="61" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8e1e8487-f459-41b5-82f4-623ceffcbfc8"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[idDetalle]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="322" y="49" width="172" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="4992507e-8ef4-4caa-8c27-060f5e352388"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Producto]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-22" y="-20" width="595" height="92" backcolor="#006699" uuid="e472dbf0-cc68-4c4b-8f24-556b47aab807"/>
+				<staticText>
+					<reportElement x="22" y="20" width="322" height="43" forecolor="#FFFFFF" uuid="514f075c-46b6-4d34-a932-94c079d94392"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Reporte de Boletas]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="575" height="1" forecolor="#666666" uuid="d0698ded-bc66-4f5d-b7aa-3415975634bf"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1c0ce380-e2a5-46e3-b5bf-3215d8e45d55"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[boleta_fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="111" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2edd94cf-4d38-4c0e-bf77-2afa777ba552"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[boleta_total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="222" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="8ce83349-f24f-4430-9d53-4db85cbb7e90"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[detalle_boleta_cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="333" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b937c4ad-d0c2-4d02-8769-876359612874"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[detalle_boleta_precioUnitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="444" y="0" width="111" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="6767e089-b338-4cde-b41a-3ebb686eb73a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[detalle_boleta_precioTotal]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="322" y="0" width="172" height="20" uuid="6761083f-c085-4373-b4b4-17db87a9abc8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{producto_nomProducto}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="494" y="0" width="61" height="20" uuid="3c8bc151-74c1-4e39-967b-edb349cf8a9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{detalle_boleta_precioTotal}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="261" y="0" width="61" height="20" uuid="85ac2bf1-45d3-4645-be71-4e5d230c791b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{detalle_boleta_cantidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="200" y="0" width="61" height="20" uuid="8c5967b8-d0ba-452b-b0c4-2292247cdd5b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{detalle_boleta_idDetalle}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="a08b6eb7-0ef8-4345-aae0-d78c76e935b2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="937c83ae-9024-4bbe-b99c-cddabdeb3f9d"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="aeff2bdb-bb91-40ca-8609-b6e70f311ab7"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
